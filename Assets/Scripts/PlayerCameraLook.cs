@@ -1,22 +1,23 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerCameraLook : MonoBehaviour
 {
-    [SerializeField] private PlayerInputReader _playerInputReader;
+    [SerializeField] private InputReader _playerInputReader;
     [SerializeField] private Transform _playerYawTransform;
     [SerializeField] private float _mouseDegreesPerPixel = 0.15f;
     [SerializeField] private float _stickDegreesPerSecond = 180f;
-    [SerializeField] private bool _invertY = false;
+
+    [SerializeField] private bool _isYInverted = false;
+    [SerializeField] private bool _isCursorLockedOnStart = true;
+
     [SerializeField] private float _minPitch = -70f;
     [SerializeField] private float _maxPitch = 80f;
-    [SerializeField] private bool _lockCursorOnStart = true;
 
     private float currentPitch;
 
     private void Awake()
     {
-        if (_lockCursorOnStart)
+        if (_isCursorLockedOnStart)
         {
             LockCursor(true);
         }
@@ -46,7 +47,7 @@ public class PlayerCameraLook : MonoBehaviour
 
         float pitchDelta =
             (mouseDelta.y * _mouseDegreesPerPixel +
-             stickDelta.y * _stickDegreesPerSecond * Time.deltaTime) * (_invertY ? 1f : -1f);
+             stickDelta.y * _stickDegreesPerSecond * Time.deltaTime) * (_isYInverted ? 1f : -1f);
 
         if (_playerYawTransform != null)
         {

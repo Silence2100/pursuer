@@ -18,17 +18,17 @@ public class BotPursuitMovement : MonoBehaviour
     private float _groundRaycastSkinOffset = 0.05f;
     private float _lowerStepRaycastVerticalOffset = 0.02f;
 
-    private Rigidbody _rigidbodyComponent;
+    private Rigidbody _rigidbody;
     private CapsuleCollider _capsuleCollider;
 
     private void Awake()
     {
-        _rigidbodyComponent = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
 
-        _rigidbodyComponent.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        _rigidbodyComponent.interpolation = RigidbodyInterpolation.Interpolate;
-        _rigidbodyComponent.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
     private void FixedUpdate()
@@ -62,12 +62,12 @@ public class BotPursuitMovement : MonoBehaviour
 
         if (slopeIsWalkable)
         {
-            Vector3 move = projectedDirection * _movementSpeed * Time.deltaTime;
-            _rigidbodyComponent.MovePosition(_rigidbodyComponent.position + move);
+            Vector3 move = projectedDirection * _movementSpeed * Time.fixedDeltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + move);
 
             Quaternion target = Quaternion.LookRotation(projectedDirection, Vector3.up);
-            Quaternion nextRotation = Quaternion.RotateTowards(_rigidbodyComponent.rotation, target, _rotationSpeedDegreesPerSecond * Time.deltaTime);
-            _rigidbodyComponent.MoveRotation(nextRotation);
+            Quaternion nextRotation = Quaternion.RotateTowards(_rigidbody.rotation, target, _rotationSpeedDegreesPerSecond * Time.fixedDeltaTime);
+            _rigidbody.MoveRotation(nextRotation);
 
         }
     }
@@ -98,7 +98,7 @@ public class BotPursuitMovement : MonoBehaviour
         if (lowerHit && upperHit == false)
         {
             Vector3 stepUp = Vector3.up * (_stepClimbSmoothing * Time.fixedDeltaTime);
-            _rigidbodyComponent.MovePosition(_rigidbodyComponent.position + stepUp);
+            _rigidbody.MovePosition(_rigidbody.position + stepUp);
         }
     }
 }
