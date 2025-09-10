@@ -86,13 +86,13 @@ public class InputReader : MonoBehaviour
         return false;
     }
 
-    private void OnEscapePerformed(InputAction.CallbackContext ctx) => _hasEscapePressedThisFrame = true;
-    private void OnLeftClickPerformed(InputAction.CallbackContext ctx) => _hasLeftClickPressedThisFrame = true;
+    private void OnEscapePerformed(InputAction.CallbackContext context) => _hasEscapePressedThisFrame = true;
+    private void OnLeftClickPerformed(InputAction.CallbackContext context) => _hasLeftClickPressedThisFrame = true;
 
-    private void OnMovePerformed(InputAction.CallbackContext ctx) => _move = ctx.ReadValue<Vector2>();
-    private void OnMoveCanceled(InputAction.CallbackContext ctx) => _move = Vector2.zero;
-    private void OnLookMousePerformed(InputAction.CallbackContext ctx) => _lookMouse = ctx.ReadValue<Vector2>();
-    private void OnLookMouseCanceled(InputAction.CallbackContext ctx) => _lookMouse = Vector2.zero;
-    private void OnLookStickPerformed(InputAction.CallbackContext ctx) => _lookStick = ctx.ReadValue<Vector2>();
-    private void OnLookStickCanceled(InputAction.CallbackContext ctx) => _lookStick = Vector2.zero;
+    private void OnMovePerformed(InputAction.CallbackContext context) => _move = context.ReadValue<Vector2>();
+    private void OnMoveCanceled(InputAction.CallbackContext context) => _move = Vector2.zero;
+    private void OnLookMousePerformed(InputAction.CallbackContext context) => _lookMouse = context.ReadValue<Vector2>();
+    private void OnLookMouseCanceled(InputAction.CallbackContext context) => _lookMouse = Vector2.zero;
+    private void OnLookStickPerformed(InputAction.CallbackContext context) => _lookStick = context.ReadValue<Vector2>();
+    private void OnLookStickCanceled(InputAction.CallbackContext context) => _lookStick = Vector2.zero;
 }

@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3503aceb24a09843898b5a1c47f2581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInputReader: {fileID: 534126463}
+  _inputReader: {fileID: 0}
   _walkSpeed: 5
-  _useCameraRelativeMovement: 1
+  _isCameraRelativeMovementEnabled: 1
   _gravityAcceleration: -9.81
   _groundedGravity: -2
   _cameraTransform: {fileID: 1185110605}
@@ -793,10 +793,10 @@ MonoBehaviour:
   _playerYawTransform: {fileID: 534126462}
   _mouseDegreesPerPixel: 0.15
   _stickDegreesPerSecond: 180
-  _invertY: 0
+  _isYInverted: 0
+  _isCursorLockedOnStart: 1
   _minPitch: -70
   _maxPitch: 80
-  _lockCursorOnStart: 1
 --- !u!1 &1320972319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1028,9 @@ GameObject:
   - component: {fileID: 1855551993}
   - component: {fileID: 1855551989}
   - component: {fileID: 1855551988}
+  - component: {fileID: 1855551996}
+  - component: {fileID: 1855551995}
+  - component: {fileID: 1855551994}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1051,14 +1054,6 @@ MonoBehaviour:
   _movementSpeed: 3
   _stopDistance: 1.5
   _rotationSpeedDegreesPerSecond: 720
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _maximumSlopeAngle: 45
-  _groundCheckDistance: 0.5
-  _maximumStepHeight: 0.25
-  _stepCheckDistance: 0.35
-  _stepClimbSmoothing: 4
 --- !u!136 &1855551989
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1177,6 +1172,50 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 2
+--- !u!114 &1855551994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855551987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17e3c38986b62e4c9bc2949b34663d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1855551995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855551987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331ddcf52a5ff774bad0bc4272b2903b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumStepHeight: 0.25
+  _stepCheckDistance: 0.35
+  _stepClimbSmoothing: 4
+--- !u!114 &1855551996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855551987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3a0499db4fdff40b2c476064f3af5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _maximumSlopeAngle: 45
+  _groundCheckDistance: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
